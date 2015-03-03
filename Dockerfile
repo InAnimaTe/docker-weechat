@@ -1,5 +1,4 @@
-FROM        ubuntu:14.04
-MAINTAINER  Joe Eli McIlvain <joe.eli.mac@gmail.com>
+FROM        ubuntu:vivid
 
 RUN apt-key update && apt-get update
 RUN apt-get install -y weechat
