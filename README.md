@@ -1,18 +1,29 @@
 
 # Usage
 
+**Scenario 1:**
+
 ``` shell
 # Run with weechat folder mounted to ~/vmdata/weechat on the host
-mkdir -p ~/vmdata/weechat
-docker run -t -i -d -v ~/vmdata/weechat:/.weechat jemc/weechat
+mkdir -p ~/.weechat
+docker run -t -i -d -v ~/.weechat:/.weechat inanimate/weechat
 ```
 ``` shell
 # Attach to the running weechat from the host
-dtach -a ~/vmdata/weechat/weechat.dtach
+dtach -a ~/.weechat/weechat.dtach
+```
+
+**Scenario 2:**
+
+```shell
+# Bring weechat to the front without detaching. Note that you would want to run this in screen/tmux most likely.
+docker run -t -i -v ~/.weechat:/.weechat inanimate/weechat
 ```
 
 In addition to the socket file, the shared volume will be used for
 configuration and logging (`$HOME/.weechat` on a typical weechat installation).
+
+> Note, we recommend you utilize Scenario 2. This is more straightforward and a more proper way to run docker containers with single apps:)
 
 
 ## Troubleshooting
@@ -40,5 +51,5 @@ The relevant command corresponding to the usage example would be:
 
 ``` shell
 # Set the SELinux context of the ~/vmdata/weechat directory on the host
-chcon -Rt svirt_sandbox_file_t ~/vmdata/weechat
+chcon -Rt svirt_sandbox_file_t ~/.weechat
 ```
