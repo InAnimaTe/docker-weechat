@@ -6,7 +6,7 @@
 ``` shell
 # Run with weechat folder mounted to ~/vmdata/weechat on the host
 mkdir -p ~/.weechat
-docker run -t -i -d -v ~/.weechat:/.weechat inanimate/weechat
+docker run -t -i -d -v ~/.weechat:/weechat inanimate/weechat
 ```
 ``` shell
 # Attach to the running weechat from the host
@@ -17,7 +17,7 @@ dtach -a ~/.weechat/weechat.dtach
 
 ```shell
 # Bring weechat to the front without detaching. Note that you would want to run this in screen/tmux most likely.
-docker run -t -i -v ~/.weechat:/.weechat inanimate/weechat
+docker run -t -i -v ~/.weechat:/weechat inanimate/weechat
 ```
 
 In addition to the socket file, the shared volume will be used for
